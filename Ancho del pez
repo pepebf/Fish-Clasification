@@ -1,0 +1,28 @@
+%{
+        Determinamos el ancho de del cuerpo del pez
+        Partimos la longitud del pez en tres para
+%}
+    
+    ancho = 0;
+    
+    for i=1: 34
+        mitad    = (floor(size(ordenado,1) / 35)* i);
+        valores  = ordenadoXY(:,2);
+        if mitad >= 41
+            valores  = valores((mitad-40) : (mitad + 40));
+            maximo   = max(valores);
+            minimo   = min(valores);
+            % obtenemos l distancia
+            distancia1 = sqrt((maximo - ordenado(mitad,2)).^2);
+            distancia2 = sqrt((minimo - ordenado(mitad,2)).^2);
+            sumaDistancias = distancia1 + distancia2;
+            if(sumaDistancias > ancho)
+                ancho = sumaDistancias;
+                superior = maximo;
+                inferior = minimo;
+                medio    = mitad;
+            end 
+        end
+        
+        
+    end
